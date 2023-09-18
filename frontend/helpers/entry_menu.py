@@ -18,13 +18,12 @@ class EntryMenu:
             locations_list = self.search_places_by_location()
             place_id = self.choose_correct_location(locations_list)
             geometry = self.get_place_details(place_id)
-            inee = Place()
-            response = inee.get_places_by_location(geometry, "gas station")
-
+            type = self.searching_nearby_places()
+            instance = Place()
+            response = instance.get_places_by_location(geometry, type.get("choice"))
             pprint(response)
+        
             
-            # searching nearby things
-            self.searching_nearby_places()
 
     def taking_user_input(self):
         print("This is Welcome Menu...")
