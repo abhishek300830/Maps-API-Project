@@ -28,3 +28,17 @@ werkzeug - INFO -  * Restarting with stat
 werkzeug - WARNING -  * Debugger is active!
 werkzeug - INFO -  * Debugger PIN: 848-026-113
 werkzeug - INFO -  * Debugger PIN: 386-149-047
+werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug - INFO - [33mPress CTRL+C to quit[0m
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 386-149-047
+controllers.location - DEBUG - place_autocomplete callled with params: Restaurant in Noida
+urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5000
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 15:34:18] "GET /place/Restaurant%20in%20Noida HTTP/1.1" 200 -
+urllib3.connectionpool - DEBUG - http://127.0.0.1:5000 "GET /place/Restaurant%20in%20Noida HTTP/1.1" 200 7879
+werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 386-149-047
