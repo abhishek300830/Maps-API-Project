@@ -20,4 +20,15 @@ def query_serch(query):
 
     return {"ok":response.json()}
 
+
+@app.get("/place/<string:query>")
+def place_autocomplete(query):
+    querystring = {"input":query,"radius":"50000"}
+    response = requests.get(url+"/autocomplete/json", headers=headers, params=querystring)
+
+    return response.json()
+
+
+
+
     
