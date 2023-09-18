@@ -20,10 +20,22 @@ class EntryMenu:
             geometry = self.get_place_details(place_id)
             type = self.searching_nearby_places()
             instance = Place()
-            response = instance.get_places_by_location(geometry, type.get("choice"))
-            pprint(response)
-        
-            
+            response = instance.get_places_by_location(
+                geometry, type.get("choice"))
+            formatted_response = [{'name': place.get('name'), 'address': place.get(
+                'vicinity'), 'place_id': place.get(
+                'place_id')} for place in response.get('results')]
+            while True:
+                place = self.choose_place(formatted_response)
+                if place.get('choice') == "None of the Above":
+                    print("No Place Found")
+                    return
+                print("Detailed Information of Place : ")
+                for i in formatted_response:
+                    if i.get('name') == place.get('choice'):
+                        print("Name : ", i.get('name'))
+                        print("Address : ", i.get('address'))
+                        return
 
     def taking_user_input(self):
         print("This is Welcome Menu...")
@@ -125,7 +137,7 @@ class EntryMenu:
         lng = geometry.get('lng')
         geometry_string = str(lat)+","+str(lng)
         return geometry_string
-        
+
     def searching_nearby_places(self):
         questions = [
             inquirer.List('choice',
@@ -139,4 +151,3 @@ class EntryMenu:
         ]
         answer = inquirer.prompt(questions)
         return answer
-        
