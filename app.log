@@ -42,3 +42,97 @@ werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard
 werkzeug - INFO -  * Restarting with stat
 werkzeug - WARNING -  * Debugger is active!
 werkzeug - INFO -  * Debugger PIN: 386-149-047
+werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug - INFO - [33mPress CTRL+C to quit[0m
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:07:57] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\controllers\\location.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:08:58] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:23:55] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\controllers\\places.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:33:27] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:33:52] "GET /place/Nodia HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:34:59] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\env_variables.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:36:27] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 16:38:06] "GET /place/Noida HTTP/1.1" 200 -
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
+werkzeug - INFO -  * Detected change in 'C:\\Programming\\Maps_api_project\\env_variables.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
