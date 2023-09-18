@@ -1,9 +1,8 @@
+import logging
 
 from controllers.location import Location
 from helpers.entry_menu import EntryMenu
 from controllers.places import Place
-
-import logging
 
 
 logging.basicConfig(filename='app.log',
