@@ -1,3 +1,4 @@
 .mapsvenv
 .vscode
 app.log
+__pycache__
