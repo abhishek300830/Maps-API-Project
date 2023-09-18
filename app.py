@@ -19,7 +19,7 @@ def check_status():
 
 
 @app.get("/search/<string:query>")
-def query_serch(query):
+def query_search(query):
     logger.debug(f"query search callled with params: {query}")
 
     try:
