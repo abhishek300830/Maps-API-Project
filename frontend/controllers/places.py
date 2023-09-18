@@ -27,6 +27,17 @@ class Place:
         except Exception as error:
             logger.error(f"Error in get_places_by_query: {error}")
             return {"error": "Something went wrong while fetching places."}
+    
+    def get_place_details_by_place_id(self,place_id):
+        logger.debug(f"called get_place_details_by_place_id with params: {place_id}")
+        try:
+            response = requests.get(
+                base_url+f"/place/{place_id}/details")
+            return response.json()
+        except Exception as error:
+            logger.error(f"Error in get_place_details_by_place_id: {error}")
+            return {"error": "Something went wrong while fetching lat long."}
+            
 
 
 # if __name__ == "__main__":

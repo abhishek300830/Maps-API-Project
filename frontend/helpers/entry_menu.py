@@ -16,7 +16,8 @@ class EntryMenu:
 
         elif answer.get('choice') == 'Search By Location':
             locations_list = self.search_places_by_location()
-            self.choose_correct_location(locations_list)
+            place_id = self.choose_correct_location(locations_list)
+            place_details = self.get_place_details(place_id)
 
     def taking_user_input(self):
         print("This is Welcome Menu...")
@@ -82,4 +83,16 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
-        return answer
+        
+        
+        for location in locations_list:
+            if location.get("description") == answer.get("choice"):
+                return location.get("place_id")
+        return None
+    
+    def get_place_details(self,place_id):
+        places_instance = Place()
+        response = places_instance.get_place_details_by_place_id(place_id)
+        pprint(response)
+        return response
+        # print("place_id",place_id)
