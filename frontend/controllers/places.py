@@ -29,8 +29,8 @@ class Place:
             return {"error": "Something went wrong while fetching places."}
 
 
-if __name__ == "__main__":
-    instance = Place()
-    response = instance.get_places_by_location("12.9716,77.5946")
+# if __name__ == "__main__":
+#     instance = Place()
+#     response = instance.get_places_by_location("12.9716,77.5946")
 
-    print(response)
+#     print(response)
