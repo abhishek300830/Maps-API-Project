@@ -3,7 +3,7 @@ import logging
 from flask import Flask
 from flask_smorest import abort
 
-from env_varaibles import url, headers
+from env_variables import url, headers
 
 logging.basicConfig(filename='app.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
