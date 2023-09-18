@@ -6,11 +6,12 @@ logger = logging.getLogger(__name__)
 
 class Place:
 
-    def get_places_by_location(self, location):  # location = "lat,lng"
-        logger.debug(f"called get_places_by_location with params: {location}")
+    def get_places_by_location(self, location, type):  # location = "lat,lng"
+        logger.debug(
+            f"called get_places_by_location with params: {location},{type}")
         try:
             response = requests.get(
-                base_url+f"/nearby_search/{location}")
+                base_url+f"/nearby_search/{location}&{type}")
             return response.json()
 
         except Exception as error:
@@ -27,9 +28,10 @@ class Place:
         except Exception as error:
             logger.error(f"Error in get_places_by_query: {error}")
             return {"error": "Something went wrong while fetching places."}
-    
-    def get_place_details_by_place_id(self,place_id):
-        logger.debug(f"called get_place_details_by_place_id with params: {place_id}")
+
+    def get_place_details_by_place_id(self, place_id):
+        logger.debug(
+            f"called get_place_details_by_place_id with params: {place_id}")
         try:
             response = requests.get(
                 base_url+f"/place/{place_id}/details")
@@ -37,7 +39,6 @@ class Place:
         except Exception as error:
             logger.error(f"Error in get_place_details_by_place_id: {error}")
             return {"error": "Something went wrong while fetching lat long."}
-            
 
 
 # if __name__ == "__main__":

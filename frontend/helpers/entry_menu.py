@@ -17,7 +17,11 @@ class EntryMenu:
         elif answer.get('choice') == 'Search By Location':
             locations_list = self.search_places_by_location()
             place_id = self.choose_correct_location(locations_list)
-            place_details = self.get_place_details(place_id)
+            geometry = self.get_place_details(place_id)
+            inee = Place()
+            response = inee.get_places_by_location(geometry, "gas station")
+
+            pprint(response)
             
             # searching nearby things
             self.searching_nearby_places()
@@ -101,7 +105,6 @@ class EntryMenu:
             if location.get("description") == answer.get("choice"):
                 return location.get("place_id")
         return None
-        
 
     def choose_place(self, places):
         choice_list = [place.get("name") for place in places]
@@ -114,16 +117,15 @@ class EntryMenu:
         ]
         answer = inquirer.prompt(questions)
         return answer
-        
-        
-        
-    
-    def get_place_details(self,place_id):
+
+    def get_place_details(self, place_id):
         places_instance = Place()
         response = places_instance.get_place_details_by_place_id(place_id)
-        pprint(response)
-        return response
-        # print("place_id",place_id)
+        geometry = response.get('result').get('geometry').get('location')
+        lat = geometry.get('lat')
+        lng = geometry.get('lng')
+        geometry_string = str(lat)+","+str(lng)
+        return geometry_string
         
     def searching_nearby_places(self):
         questions = [
