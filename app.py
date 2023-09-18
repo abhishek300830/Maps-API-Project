@@ -20,7 +20,7 @@ def check_status():
 
 @app.get("/search/<string:query>")
 def query_search(query):
-    logger.debug(f"query search callled with params: {query}")
+    logger.debug(f"query_search callled with params: {query}")
 
     try:
         querystring = {"radius": "1500", "query": query}
@@ -36,7 +36,7 @@ def query_search(query):
 
 @app.get("/nearby_search/<string:location>")
 def nearby_search(location):
-    logger.debug(f"nearby search callled with params: {location}")
+    logger.debug(f"nearby_search callled with params: {location}")
 
     try:
         querystring = {"location": location, "radius": "1500"}
