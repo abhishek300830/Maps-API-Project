@@ -34,12 +34,12 @@ def query_search(query):
         abort(400, message="Bad Request")
 
 
-@app.get("/nearby_search/<string:location>")
-def nearby_search(location):
-    logger.debug(f"nearby_search callled with params: {location}")
+@app.get("/nearby_search/<string:location>&<string:type>")
+def nearby_search(location, type):
+    logger.debug(f"nearby_search callled with params: {location},{type}")
 
     try:
-        querystring = {"location": location, "radius": "1500"}
+        querystring = {"location": location, "radius": "1500", "keyword": type}
         response = requests.get(url+"/nearbysearch/json",
                                 headers=headers, params=querystring)
         return response.json()
