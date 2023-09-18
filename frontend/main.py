@@ -1,3 +1,5 @@
+
+from controllers.location import Location
 from helpers.entry_menu import EntryMenu
 
 import logging
@@ -12,7 +14,10 @@ def main():
     instance.welcome_menu()
 
 if __name__ == "__main__":
-    main()
+    # main()
+    instance = Location()
+    instance.get_location_by_query("Noida")
+
     
 
 
