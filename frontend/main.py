@@ -1,3 +1,5 @@
+
+from controllers.location import Location
 from helpers.entry_menu import EntryMenu
 from controllers.places import Place
 
@@ -16,6 +18,4 @@ def main():
 
 
 if __name__ == "__main__":
-    inst = Place()
-    response = inst.get_places_by_query("restaurent in Bangalore")
-    print(response)
+    main()

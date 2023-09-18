@@ -26,4 +26,5 @@ urllib3.connectionpool - DEBUG - http://127.0.0.1:5000 "GET /search/restaurent%2
 werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\helpers\\entry_menu.py', reloading
 werkzeug - INFO -  * Restarting with stat
 werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 848-026-113
 werkzeug - INFO -  * Debugger PIN: 386-149-047
