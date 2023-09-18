@@ -43,9 +43,8 @@ class EntryMenu:
                 new_dict = {}
                 new_dict["description"] = location.get("description")
                 new_dict["place_id"] = location.get("place_id")
-                locations_list.append(new_dict)
-                return locations_list
-                pprint(locations_list)
+                locations_list.append(new_dict)  
+            return locations_list
         else:
             print("Location Data Not Available.")
 
@@ -73,12 +72,13 @@ class EntryMenu:
         answer = inquirer.prompt(questions)
         return answer
 
-    def choose_correct_location(self, locations_list):
+
+    def choose_correct_location(self,locations_list):
+        choice_list = [location.get("description") for location in locations_list]
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
-                          choices=['Search By Any Query',
-                                   'Search By Location'],
+                          choices=choice_list,
                           ),
         ]
         answer = inquirer.prompt(questions)
