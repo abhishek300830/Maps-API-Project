@@ -94,7 +94,11 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
-        return answer
+        for location in locations_list:
+            if location.get("description") == answer.get("choice"):
+                return location.get("place_id")
+        return None
+        
 
     def choose_place(self, places):
         choice_list = [place.get("name") for place in places]
@@ -106,12 +110,10 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
+        return answer
         
         
-        for location in locations_list:
-            if location.get("description") == answer.get("choice"):
-                return location.get("place_id")
-        return None
+        
     
     def get_place_details(self,place_id):
         places_instance = Place()
