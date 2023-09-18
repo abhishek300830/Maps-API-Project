@@ -43,7 +43,7 @@ class EntryMenu:
                 new_dict = {}
                 new_dict["description"] = location.get("description")
                 new_dict["place_id"] = location.get("place_id")
-                locations_list.append(new_dict)  
+                locations_list.append(new_dict)
             return locations_list
         else:
             print("Location Data Not Available.")
@@ -63,7 +63,18 @@ class EntryMenu:
         formatted_response = [{'name': place.get('name'), 'address': place.get(
             'formatted_address'), 'place_id': place.get(
             'place_id')} for place in results]
-        self.print_places_data(formatted_response)
+
+        while True:
+            place = self.choose_place(formatted_response)
+            if place.get('choice') == "None of the Above":
+                print("No Place Found")
+                return
+            print("Detailed Information of Place : ")
+            for i in formatted_response:
+                if i.get('name') == place.get('choice'):
+                    print("Name : ", i.get('name'))
+                    print("Address : ", i.get('address'))
+                    return
 
     def __input_user_query(self):
         questions = [
@@ -72,9 +83,9 @@ class EntryMenu:
         answer = inquirer.prompt(questions)
         return answer
 
-
-    def choose_correct_location(self,locations_list):
-        choice_list = [location.get("description") for location in locations_list]
+    def choose_correct_location(self, locations_list):
+        choice_list = [location.get("description")
+                       for location in locations_list]
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
@@ -84,9 +95,14 @@ class EntryMenu:
         answer = inquirer.prompt(questions)
         return answer
 
-    def print_places_data(self, places):
-        table = PrettyTable(['Name', 'Address'])
-        for place in places:
-            table.add_row([place.get('name'), place.get(
-                'address')])
-        print(table)
+    def choose_place(self, places):
+        choice_list = [place.get("name") for place in places]
+        choice_list.append("None of the Above")
+        questions = [
+            inquirer.List('choice',
+                          message="Please Select Your Choice : ",
+                          choices=choice_list,
+                          ),
+        ]
+        answer = inquirer.prompt(questions)
+        return answer
