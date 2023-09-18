@@ -41,6 +41,7 @@ def place_autocomplete(query):
 
 @app.get("/place/<string:placeid>/details")
 def place_details(placeid):
+    logger.debug(f"place_details callled with params: {placeid}")
     querystring = {"place_id": placeid}
     try:
         response = requests.get(url+"/details/json",
