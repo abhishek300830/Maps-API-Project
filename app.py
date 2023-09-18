@@ -7,6 +7,7 @@ from env_varaibles import url, headers
 
 logging.basicConfig(filename='app.log', filemode='w',
                     format='%(name)s - %(levelname)s - %(message)s')
+
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
@@ -19,23 +20,30 @@ def check_status():
 
 @app.get("/search/<string:query>")
 def query_serch(query):
+    logger.debug(f"query search callled with params: {query}")
+
     try:
         querystring = {"radius": "1500", "query": query}
-        response = requests.get(url+"/textsearch/json",
-                                headers=headers, params=querystring)
+        response = requests.get(url+"/textsearch/json",headers=headers, params=querystring)
 
         return {"ok": response.json()}
+        
     except Exception as error:
+        logger.error(error)
         abort(400,message="Bad Request")
 
-@app.get("nearby_search/<string:location>")
+
+@app.get("/nearby_search/<string:location>")
 def nearby_search(location):
+    logger.debug(f"nearby search callled with params: {location}")
 
     try:
         querystring = {"location":location,"radius":"1500"}
         response = requests.get(url+"/nearbysearch/json", headers=headers, params=querystring)
         return response.json()
-    except Exception:
+    
+    except Exception as error:
+        logger.error(error)
         abort(400,message="Bad Request")
 
 
