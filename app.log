@@ -1,3 +1,30 @@
+controllers.places - ERROR - Error in get_places_by_query: Expecting value: line 1 column 1 (char 0)
+lore HTTP/1.1[0m" 404 -
+werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\main.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 386-149-047
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 15:01:17] "[33mGET /query_search/restaurent%20in%20Bangalore HTTP/1.1[0m" 404 -
+controllers.places - ERROR - Error in get_places_by_query: Expecting value: line 1 column 1 (char 0)
+werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\main.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 386-149-047
+controllers.places - DEBUG - called get_places_by_query with params: restaurent in Bangalore
+urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5000
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 15:01:52] "[33mGET /query_search/restaurent%20in%20Bangalore HTTP/1.1[0m" 404 -
+urllib3.connectionpool - DEBUG - http://127.0.0.1:5000 "GET /query_search/restaurent%20in%20Bangalore HTTP/1.1" 404 207
+controllers.places - ERROR - Error in get_places_by_query: Expecting value: line 1 column 1 (char 0)
+werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\controllers\\places.py', reloading
+werkzeug - INFO -  * Restarting with stat
+werkzeug - WARNING -  * Debugger is active!
+werkzeug - INFO -  * Debugger PIN: 386-149-047
+controllers.places - DEBUG - called get_places_by_query with params: restaurent in Bangalore
+urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5000
+werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 15:02:34] "GET /search/restaurent%20in%20Bangalore HTTP/1.1" 200 -
+urllib3.connectionpool - DEBUG - http://127.0.0.1:5000 "GET /search/restaurent%20in%20Bangalore HTTP/1.1" 200 38055
+werkzeug - INFO -  * Detected change in 'C:\\Users\\ahada\\OneDrive - WatchGuard Technologies Inc\\Maps-API-Project\\frontend\\helpers\\entry_menu.py', reloading
+werkzeug - INFO -  * Restarting with stat
 werkzeug - WARNING -  * Debugger is active!
 werkzeug - INFO -  * Debugger PIN: 848-026-113
 werkzeug - INFO -  * Debugger PIN: 386-149-047
