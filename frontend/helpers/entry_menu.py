@@ -8,3 +8,4 @@ class EntryMenu:
         print("This is Welcome Menu....")
         
         
+        
