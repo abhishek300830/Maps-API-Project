@@ -5,7 +5,7 @@ from flask_smorest import abort
 
 from env_variables import url, headers
 
-logging.basicConfig(filename='app.log', filemode='w',
+logging.basicConfig(filename='app.log',
                     format='%(name)s - %(levelname)s - %(message)s')
 
 logger = logging.getLogger(__name__)

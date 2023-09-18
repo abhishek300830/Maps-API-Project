@@ -1,6 +1,5 @@
 from helpers.env_variables import base_url
 import requests
-import requests.exceptions
 import logging
 logger = logging.getLogger(__name__)
 
@@ -14,7 +13,7 @@ class Place:
                 base_url+f"/nearby_search/{location}")
             return response.json()
 
-        except requests.exceptions as error:
+        except Exception as error:
             logger.error(f"Error in get_places_by_location: {error}")
             return {"error": "Something went wrong while fetching places."}
 
@@ -22,10 +21,10 @@ class Place:
         logger.debug(f"called get_places_by_query with params: {query}")
         try:
             response = requests.get(
-                base_url+f"/text_search/{query}")
+                base_url+f"/search/{query}")
             return response.json()
 
-        except requests.exceptions as error:
+        except Exception as error:
             logger.error(f"Error in get_places_by_query: {error}")
             return {"error": "Something went wrong while fetching places."}
 
