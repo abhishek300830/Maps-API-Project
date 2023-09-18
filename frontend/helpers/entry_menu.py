@@ -1,5 +1,5 @@
 import inquirer
-
+from prettytable import PrettyTable
 from pprint import pprint
 from controllers.location import Location
 from controllers.places import Place
@@ -33,7 +33,8 @@ class EntryMenu:
     def search_places_by_location(self):
         location_instance = Location()
         user_location = self.__input_user_location()
-        response = location_instance.get_location_by_query(user_location.get('query'))
+        response = location_instance.get_location_by_query(
+            user_location.get('query'))
 
         locations_list = []
         locations = response.get("predictions")
@@ -47,7 +48,6 @@ class EntryMenu:
                 pprint(locations_list)
         else:
             print("Location Data Not Available.")
-        
 
     def __input_user_location(self):
         questions = [
@@ -64,7 +64,7 @@ class EntryMenu:
         formatted_response = [{'name': place.get('name'), 'address': place.get(
             'formatted_address'), 'place_id': place.get(
             'place_id')} for place in results]
-        pprint(formatted_response)
+        self.print_places_data(formatted_response)
 
     def __input_user_query(self):
         questions = [
@@ -73,13 +73,20 @@ class EntryMenu:
         answer = inquirer.prompt(questions)
         return answer
 
-
-    def choose_correct_location(self,locations_list):
+    def choose_correct_location(self, locations_list):
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
-                          choices=['Search By Any Query', 'Search By Location'],
+                          choices=['Search By Any Query',
+                                   'Search By Location'],
                           ),
         ]
         answer = inquirer.prompt(questions)
         return answer
+
+    def print_places_data(self, places):
+        table = PrettyTable(['Name', 'Address'])
+        for place in places:
+            table.add_row([place.get('name'), place.get(
+                'address')])
+        print(table)
