@@ -1,8 +1,0 @@
-werkzeug - WARNING -  * Debugger is active!
-werkzeug - INFO -  * Debugger PIN: 386-149-047
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:47:15] "GET /place/noida HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:49:27] "GET /status HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:51:36] "GET /search/restaurant%20in%20noida HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:52:25] "GET /place/Noid HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:54:12] "GET /place/Noid HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [18/Sep/2023 11:54:55] "GET /place/ChIJezVzMaTlDDkRP8B8yDDO_zc/details HTTP/1.1" 200 -
