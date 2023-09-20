@@ -6,6 +6,7 @@ from controllers.places import Place
 from helpers.validators import validate_string
 from termcolor import colored
 import traceback
+import threading
 
 WELCOME_TEXT = """
 
@@ -23,6 +24,8 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
 class EntryMenu:
 
     def welcome_menu(self):
+
+        convert_text_to_speech("Welcome to ++Maps")
 
         while True:
             os.system("cls")
@@ -47,7 +50,6 @@ class EntryMenu:
     def taking_user_input(self):
         colored_welcome_text = colored(WELCOME_TEXT, 'green', attrs=['bold'])
         print(colored_welcome_text)
-        convert_text_to_speech("Welcome to ++Maps")
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
