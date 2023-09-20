@@ -1,57 +1,97 @@
+import os
 import inquirer
+
 from prettytable import PrettyTable
 from pprint import pprint
 from controllers.location import Location
 from controllers.places import Place
+from helpers.validators import validate_string
+
+WELCOME_TEXT ="""
+
+____    __    ____  _______  __        ______   ______   .___  ___.  _______    .___________.  ______                   .___  ___.      ___      .______     _______.
+\   \  /  \  /   / |   ____||  |      /      | /  __  \  |   \/   | |   ____|   |           | /  __  \        _     _   |   \/   |     /   \     |   _  \   /       |
+ \   \/    \/   /  |  |__   |  |     |  ,----'|  |  |  | |  \  /  | |  |__      `---|  |----`|  |  |  |     _| |_ _| |_ |  \  /  |    /  ^  \    |  |_)  | |   (----`
+  \            /   |   __|  |  |     |  |     |  |  |  | |  |\/|  | |   __|         |  |     |  |  |  |    |_   _|_   _||  |\/|  |   /  /_\  \   |   ___/   \   \    
+   \    /\    /    |  |____ |  `----.|  `----.|  `--'  | |  |  |  | |  |____        |  |     |  `--'  |      |_|   |_|  |  |  |  |  /  _____  \  |  |   .----)   |   
+    \__/  \__/     |_______||_______| \______| \______/  |__|  |__| |_______|       |__|      \______/                  |__|  |__| /__/     \__\ | _|   |_______/    
+                                                                                                                                                                     
+
+"""
 
 
 class EntryMenu:
 
     def welcome_menu(self):
+        
+        while True:
+            os.system("clear")
+            
+            try:
+                answer = self.taking_user_input()
 
-        answer = self.taking_user_input()
+                if answer.get('choice') == 'Search By Any Query':
+                    self.search_places_by_query()
 
-        if answer.get('choice') == 'Search By Any Query':
-            self.search_places_by_query()
-
-        elif answer.get('choice') == 'Search By Location':
-            locations_list = self.search_places_by_location()
-            place_id = self.choose_correct_location(locations_list)
-            geometry = self.get_place_details(place_id)
-            type = self.searching_nearby_places()
-            instance = Place()
-            response = instance.get_places_by_location(
-                geometry, type.get("choice"))
-            formatted_response = [{'name': place.get('name'), 'address': place.get(
-                'vicinity'), 'place_id': place.get(
-                'place_id')} for place in response.get('results')]
-            while True:
-                place = self.choose_place(formatted_response)
-                if place.get('choice') == "None of the Above":
-                    print("No Place Found")
+                elif answer.get('choice') == 'Search By Location':
+                    self.search_by_location()
+                
+                elif answer.get('choice') == 'Exit':
                     return
-                print("Detailed Information of Place : ")
-                for i in formatted_response:
-                    if i.get('name') == place.get('choice'):
-                        print("Name : ", i.get('name'))
-                        print("Address : ", i.get('address'))
-                        return
+            except Exception as error:
+                print("Internal Server Error",error)
+            
+            input("Press Enter to Continue....") 
+            
+            
 
     def taking_user_input(self):
-        print("This is Welcome Menu...")
+        print(WELCOME_TEXT)
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
                           choices=['Search By Any Query',
-                                   'Search By Location'],
+                                   'Search By Location',
+                                   "Exit"],
                           ),
         ]
         answer = inquirer.prompt(questions)
         return answer
+    
+    def search_by_location(self):
+        locations_list = self.get_places_by_location()
+        if locations_list is None:
+            return
+        place_id = self.choose_correct_location(locations_list)
+        if place_id is None:
+            return
+        geometry = self.get_place_details(place_id)
+        type = self.searching_nearby_places()
+        
+        formatted_response = self.getting_location_data_from_api(geometry,type)
+        
+        self.view_detailed_information_of_places(formatted_response)
+    
+    
+    def getting_location_data_from_api(self,geometry,type):
+        instance = Place()
+        
+        response = instance.get_places_by_location(
+            geometry, type.get("choice"))
+        
+        formatted_response = [{'name': place.get('name'), 'address': place.get(
+            'vicinity'), 'place_id': place.get(
+            'place_id')} for place in response.get('results')]
+        
+        return formatted_response
+        
 
-    def search_places_by_location(self):
+    def get_places_by_location(self):
         location_instance = Location()
         user_location = self.__input_user_location()
+        if validate_string(user_location.get('query')) is None:
+            print("Enter Valid Input...")
+            return None
         response = location_instance.get_location_by_query(
             user_location.get('query'))
 
@@ -76,13 +116,21 @@ class EntryMenu:
 
     def search_places_by_query(self):
         query = self.__input_user_query()
+        if validate_string(query.get('query')) is None:
+            print("Enter Valid input...")
+            return
         place_instance = Place()
         response = place_instance.get_places_by_query(query.get('query'))
         results = response.get('ok').get('results')
         formatted_response = [{'name': place.get('name'), 'address': place.get(
             'formatted_address'), 'place_id': place.get(
             'place_id')} for place in results]
+        
+        self.view_detailed_information_of_places(formatted_response)
 
+        
+                
+    def view_detailed_information_of_places(self, formatted_response):
         while True:
             place = self.choose_place(formatted_response)
             if place.get('choice') == "None of the Above":
@@ -105,6 +153,8 @@ class EntryMenu:
     def choose_correct_location(self, locations_list):
         choice_list = [location.get("description")
                        for location in locations_list]
+        choice_list.append("None of the Above")
+        
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
