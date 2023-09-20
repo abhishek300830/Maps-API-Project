@@ -1,13 +1,13 @@
 import os
 import inquirer
-
-from prettytable import PrettyTable
-from pprint import pprint
+from helpers.audio_converter import convert_text_to_speech
 from controllers.location import Location
 from controllers.places import Place
 from helpers.validators import validate_string
+from termcolor import colored
+import traceback
 
-WELCOME_TEXT ="""
+WELCOME_TEXT = """
 
 ____    __    ____  _______  __        ______   ______   .___  ___.  _______    .___________.  ______                   .___  ___.      ___      .______     _______.
 \   \  /  \  /   / |   ____||  |      /      | /  __  \  |   \/   | |   ____|   |           | /  __  \        _     _   |   \/   |     /   \     |   _  \   /       |
@@ -23,30 +23,31 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______    
 class EntryMenu:
 
     def welcome_menu(self):
-        
+
         while True:
-            os.system("clear")
-            
+            os.system("cls")
             try:
                 answer = self.taking_user_input()
-
                 if answer.get('choice') == 'Search By Any Query':
                     self.search_places_by_query()
 
                 elif answer.get('choice') == 'Search By Location':
                     self.search_by_location()
-                
+
                 elif answer.get('choice') == 'Exit':
+                    convert_text_to_speech(
+                        "Thank you for using ++Maps. Have a Nice day.")
                     return
             except Exception as error:
-                print("Internal Server Error",error)
-            
-            input("Press Enter to Continue....") 
-            
-            
+                print(traceback.print_exc())
+                print("Internal Server Error", error)
+
+            input("Press Enter to Continue....")
 
     def taking_user_input(self):
-        print(WELCOME_TEXT)
+        colored_welcome_text = colored(WELCOME_TEXT, 'green', attrs=['bold'])
+        print(colored_welcome_text)
+        convert_text_to_speech("Welcome to ++Maps")
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
@@ -56,8 +57,9 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
+        convert_text_to_speech("You Selected "+answer.get('choice'))
         return answer
-    
+
     def search_by_location(self):
         locations_list = self.get_places_by_location()
         if locations_list is None:
@@ -67,24 +69,23 @@ class EntryMenu:
             return
         geometry = self.get_place_details(place_id)
         type = self.searching_nearby_places()
-        
-        formatted_response = self.getting_location_data_from_api(geometry,type)
-        
+
+        formatted_response = self.getting_location_data_from_api(
+            geometry, type)
+
         self.view_detailed_information_of_places(formatted_response)
-    
-    
-    def getting_location_data_from_api(self,geometry,type):
+
+    def getting_location_data_from_api(self, geometry, type):
         instance = Place()
-        
+
         response = instance.get_places_by_location(
             geometry, type.get("choice"))
-        
+
         formatted_response = [{'name': place.get('name'), 'address': place.get(
             'vicinity'), 'place_id': place.get(
             'place_id')} for place in response.get('results')]
-        
+
         return formatted_response
-        
 
     def get_places_by_location(self):
         location_instance = Location()
@@ -125,11 +126,9 @@ class EntryMenu:
         formatted_response = [{'name': place.get('name'), 'address': place.get(
             'formatted_address'), 'place_id': place.get(
             'place_id')} for place in results]
-        
+
         self.view_detailed_information_of_places(formatted_response)
 
-        
-                
     def view_detailed_information_of_places(self, formatted_response):
         while True:
             place = self.choose_place(formatted_response)
@@ -148,13 +147,14 @@ class EntryMenu:
             inquirer.Text('query', message="Enter Your Query : ")
         ]
         answer = inquirer.prompt(questions)
+        convert_text_to_speech("Your Query : "+answer.get('query'))
         return answer
 
     def choose_correct_location(self, locations_list):
         choice_list = [location.get("description")
                        for location in locations_list]
         choice_list.append("None of the Above")
-        
+
         questions = [
             inquirer.List('choice',
                           message="Please Select Your Choice : ",
@@ -162,6 +162,7 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
+        convert_text_to_speech("You Selected "+answer.get('choice'))
         for location in locations_list:
             if location.get("description") == answer.get("choice"):
                 return location.get("place_id")
@@ -177,6 +178,7 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
+        convert_text_to_speech("You Selected "+answer.get('choice'))
         return answer
 
     def get_place_details(self, place_id):
@@ -200,4 +202,5 @@ class EntryMenu:
                           ),
         ]
         answer = inquirer.prompt(questions)
+        convert_text_to_speech("You Selected "+answer.get('choice'))
         return answer
