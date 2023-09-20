@@ -1,2 +1,3 @@
 inquirer
 termcolor
+pyttsx3
