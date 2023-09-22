@@ -5,3 +5,5 @@ headers = {
     "X-RapidAPI-Key": "55a90f3250msh2ef03bbf3746523p1007bdjsn8f3f18c48707",
     "X-RapidAPI-Host": "map-places.p.rapidapi.com"
 }
+
+radius = "15000"

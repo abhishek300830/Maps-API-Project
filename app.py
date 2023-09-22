@@ -3,7 +3,7 @@ import logging
 from flask import Flask
 from flask_smorest import abort
 
-from env_variables import url, headers
+from env_variables import url, headers, radius
 
 logging.basicConfig(filename='app.log',
                     format='%(name)s - %(levelname)s - %(message)s')
@@ -20,10 +20,11 @@ def check_status():
 
 @app.get("/search/<string:query>")
 def query_search(query):
+    """Search for places using a text query string, such as "pizza in Noida" or "shoe stores near Advant noida"."""
     logger.debug(f"query_search callled with params: {query}")
 
     try:
-        querystring = {"radius": "1500", "query": query}
+        querystring = {"radius": radius, "query": query}
         response = requests.get(url+"/textsearch/json",
                                 headers=headers, params=querystring)
 
